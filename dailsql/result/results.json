@@ -1,0 +1,243 @@
+{
+  "metrics": {
+    "total": 10,
+    "exact_match_acc": 0.1,
+    "exec_acc": 0.0,
+    "skeleton_acc": 0.4,
+    "component_acc": {
+      "ORDER BY": 1.0,
+      "GROUP BY": 0.7,
+      "HAVING": 1.0,
+      "JOIN": 0.8,
+      "WHERE": 0.4,
+      "LIMIT": 1.0,
+      "SELECT": 0.4
+    },
+    "by_complexity": {
+      "medium": {
+        "em": 0.2,
+        "ex": 0.0
+      },
+      "easy": {
+        "em": 0.0,
+        "ex": 0.0
+      },
+      "hard": {
+        "em": 0.0,
+        "ex": 0.0
+      }
+    }
+  },
+  "predictions": [
+    {
+      "index": 0,
+      "db_id": "architecture",
+      "question": "Có tất_cả bao_nhiêu kiến_trúc_sư nữ ?",
+      "predicted": "select count ( * ) from kiến_trúc_sư where giới_tính = nữ",
+      "gold": "select count ( * ) from kiến_trúc_sư where giới_tính = \"female\"",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": true,
+      "component_scores": {
+        "SELECT": true,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "medium",
+      "error_msg": ""
+    },
+    {
+      "index": 1,
+      "db_id": "architecture",
+      "question": "Liệt_kê tên , quốc_tịch và id của tất_cả các kiến_trúc_sư nam theo thứ_tự tên .",
+      "predicted": "select id, tên, quốc_tịch from kiến_trúc_sư where giới_tính = male order by tên",
+      "gold": "select tên , quốc_tịch , id from kiến_trúc_sư where giới_tính = \"male\" order by tên",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "easy",
+      "error_msg": ""
+    },
+    {
+      "index": 2,
+      "db_id": "architecture",
+      "question": "Cho biết tên của người kiến_trúc_sư đã tạo ra cây cầu dài nhất cũng như là chiều dài tính bằng mét của cây cầu này .",
+      "predicted": "select t1.tên , t2.chiều dài theo mét from kiến_trúc_sư as t1 join cầu as t2 on t1.id = t2.id kiến_trúc_sư where t2.chiều dài theo mét = ( select max ( chiều dài theo mét ) from cầu )",
+      "gold": "select max ( t1.chiều dài theo mét ) , t2.tên from cầu as t1 join kiến_trúc_sư as t2 on t1.id kiến_trúc_sư = t2.id",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": false
+      },
+      "complexity": "medium",
+      "error_msg": ""
+    },
+    {
+      "index": 3,
+      "db_id": "architecture",
+      "question": "Cho biết chiều dài trung_bình tính theo feet của tất_cả các cây cầu .",
+      "predicted": "select avg ( chiều dài theo feet ) from cầu",
+      "gold": "select avg ( chiều dài theo feet ) from cầu",
+      "exact_match": true,
+      "exec_match": false,
+      "skeleton_match": true,
+      "component_scores": {
+        "SELECT": true,
+        "WHERE": true,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "medium",
+      "error_msg": ""
+    },
+    {
+      "index": 4,
+      "db_id": "architecture",
+      "question": "Cho biết tên và năm xây_dựng của các nhà_máy thuộc loại ' Grondzeiler ' ?",
+      "predicted": "select tên , năm xây_dựng from nhà_máy where loại = grondzeiler",
+      "gold": "select tên , năm xây_dựng from nhà_máy where loại = \"Grondzeiler\"",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": true,
+      "component_scores": {
+        "SELECT": true,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "easy",
+      "error_msg": ""
+    },
+    {
+      "index": 5,
+      "db_id": "architecture",
+      "question": "Cho biết tên và quốc_tịch của những kiến_trúc_sư khác nhau đã từng xây_dựng một nhà_máy .",
+      "predicted": "select t1.tên , t1.quốc_tịch from kiến_trúc_sư as t1 join nhà_máy as t2 on t1.id = t2.id kiến_trúc_sư group by t1.id",
+      "gold": "select distinct t1.tên , t1.quốc_tịch from kiến_trúc_sư as t1 join nhà_máy as t2 on t1.id = t2.id kiến_trúc_sư",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": true,
+        "GROUP BY": false,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "medium",
+      "error_msg": ""
+    },
+    {
+      "index": 6,
+      "db_id": "architecture",
+      "question": "Cho biết tên của các nhà_máy không được đặt tại ' Donceel ' .",
+      "predicted": "select tên from nhà_máy where tên != donceel",
+      "gold": "select tên from nhà_máy where địa_điểm != \"Donceel\"",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": true,
+      "component_scores": {
+        "SELECT": true,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "easy",
+      "error_msg": ""
+    },
+    {
+      "index": 7,
+      "db_id": "architecture",
+      "question": "Cho biết các loại nhà_máy khác nhau đã được xây_dựng bởi các kiến_trúc_sư người Mỹ hoặc các kiến_trúc_sư người Canada .",
+      "predicted": "select distinct nhà_máy.loại from nhà_máy join kiến_trúc_sư as t1 on nhà_máy.id kiến_trúc_sư = t1.id where t1.quốc_gia in (mỹ, canada)",
+      "gold": "select distinct t1.loại from nhà_máy as t1 join kiến_trúc_sư as t2 on t1.id kiến_trúc_sư = t2.id where t2.quốc_tịch = \"American\" or t2.quốc_tịch = \"Canadian\"",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": false,
+        "GROUP BY": true,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": false
+      },
+      "complexity": "medium",
+      "error_msg": ""
+    },
+    {
+      "index": 8,
+      "db_id": "architecture",
+      "question": "Cho biết id và tên của các kiến_trúc_sư đã xây_dựng ít_nhất 3 cây cầu .",
+      "predicted": "select t1.id kiến_trúc_sư, t1.tên from kiến_trúc_sư as t1 join cầu as t2 on t1.id = t2.id kiến_trúc_sư group by t1.id kiến_trúc_sư, t1.tên having count ( * ) >= 3",
+      "gold": "select t1.id , t1.tên from kiến_trúc_sư as t1 join cầu as t2 on t1.id = t2.id kiến_trúc_sư group by t1.id having count ( * ) >= 3",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": true,
+        "GROUP BY": false,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "hard",
+      "error_msg": ""
+    },
+    {
+      "index": 9,
+      "db_id": "architecture",
+      "question": "Cho biết id , tên và quốc_tịch của kiến_trúc_sư đã xây_dựng nhiều nhà_máy nhất .",
+      "predicted": "select t1.id, t1.tên, t1.quốc_tịch from kiến_trúc_sư as t1 join nhà_máy as t2 on t1.id = t2.id kiến_trúc_sư group by t1.id, t1.tên, t1.quốc_tịch order by count ( * ) desc limit 1",
+      "gold": "select t1.id , t1.tên , t1.quốc_tịch from kiến_trúc_sư as t1 join nhà_máy as t2 on t1.id = t2.id kiến_trúc_sư group by t1.id order by count ( * ) desc limit 1",
+      "exact_match": false,
+      "exec_match": false,
+      "skeleton_match": false,
+      "component_scores": {
+        "SELECT": false,
+        "WHERE": true,
+        "GROUP BY": false,
+        "HAVING": true,
+        "ORDER BY": true,
+        "LIMIT": true,
+        "JOIN": true
+      },
+      "complexity": "hard",
+      "error_msg": ""
+    }
+  ]
+}
