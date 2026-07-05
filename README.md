@@ -1,6 +1,6 @@
 # DAIL-SQL — Vietnamese Text-to-SQL Pipeline
 
-Một pipeline **Text-to-SQL** xây dựng trên nền tảng [DAIL-SQL](https://arxiv.org/abs/2308.15363), được thiết kế để dịch câu hỏi tiếng Việt sang SQL trên dataset Spider. Pipeline tích hợp DAIL Selection, DAIL Organization, schema linking tiếng Việt, cell-value retrieval và post-processing tự động.
+Một pipeline **Text-to-SQL** xây dựng trên nền tảng [DAIL-SQL](https://arxiv.org/abs/2308.15363), được thiết kế để dịch câu hỏi tiếng Việt sang SQL trên dataset Spider. Pipeline tích hợp DAIL Selection, DAIL Organization, schema linking tiếng Việt, mở rộng thêm graph linking, cell-value retrieval và post-processing tự động.
 
 ---
 
