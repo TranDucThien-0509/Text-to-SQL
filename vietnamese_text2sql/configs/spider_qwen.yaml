@@ -1,0 +1,44 @@
+# ── Thông tin chung ──
+experiment_name: "test_spider_qwen_no_db"
+
+# ── Paths: Vietnamese dataset (input cho pipeline) ──
+base_dir: "C:\\Users\\Admin\\Documents\\Uni\\DS319\\Text-to-SQL\\data\\word-level"
+dev_file: "failed_test.json"
+tables_file: "tables.json"
+
+# ── Paths: English Spider (gold SQL + SQLite DB) ──
+en_base_dir: "C:\\Users\\Admin\\Documents\\Uni\\DS319\\Text-to-SQL\\data\\spider_data"
+en_dev_file: "total_spider.json"
+db_dir: "C:\\Users\\Admin\\Documents\\Uni\\DS319\\Text-to-SQL\\data\\spider_data\\database"
+
+# ── Schema mapping pre-built ──
+schema_map_path: "C:\\Users\\Admin\\Documents\\Uni\\DS319\\Text-to-SQL\\dailsql\\pretrain\\schema_matching_map_word.json"
+
+# ── Output ──
+output_dir: "result"
+
+# ── Các tính năng yêu cầu Database thật ──
+use_execution_guided: True
+use_self_repair: True 
+use_cell_value: true
+use_value_translation: true
+translator_model: "<checkpoint VI-EN fine-tuned>"
+use_schema_pruning: true
+
+# ── Truy xuất DB cho SQLExecutor / SQLRepairer ──
+# (trước đây SQLRepairer không được truyền db_dir nên value-matching +
+#  full-table value-dump bị vô hiệu hóa hoàn toàn — đã fix trong pipeline)
+sql_timeout_seconds: 5.0        # timeout cho mỗi lần execute SQL thử nghiệm
+sql_max_rows: 1000              # cap số dòng trả về mỗi lần execute
+repair_max_values_per_col: 10   # số distinct values tối đa/cột khi dump cho GAT Corrector
+repair_max_value_dump_chars: 2000  # cap tổng độ dài block "Giá trị thực tế trong CSDL"
+
+# ── Cấu hình LLM ──
+llm_model: "qwen/qwen3-8b"
+llm_temperature: 0.0
+
+# ── Embedding model ──
+embedding_model: "BAAI/bge-m3"
+
+# ── Chạy thử nghiệm ──
+test_limit: 500
