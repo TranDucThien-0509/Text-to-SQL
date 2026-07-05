@@ -12,9 +12,7 @@ Một pipeline **Text-to-SQL** xây dựng trên nền tảng [DAIL-SQL](https:/
 - [Cấu hình](#cấu-hình)
 - [Dữ liệu](#dữ-liệu)
 - [Cách chạy](#cách-chạy)
-- [Chi tiết từng module](#chi-tiết-từng-module)
 - [Kết quả đầu ra](#kết-quả-đầu-ra)
-- [Thực nghiệm & Reproducibility](#thực-nghiệm--reproducibility)
 
 ---
 ## Kiến trúc tổng quan
