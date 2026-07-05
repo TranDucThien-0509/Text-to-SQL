@@ -18,54 +18,7 @@ Một pipeline **Text-to-SQL** xây dựng trên nền tảng [DAIL-SQL](https:/
 
 ---
 
-## Kiến trúc tổng quan
-
-```
-Câu hỏi tiếng Việt
-        │
-        ▼
-┌───────────────────┐
-│  Schema Linking   │  ← q_col_match · q_tab_match
-│  (SchemaLinker)   │     cell_match · num_date_match
-└────────┬──────────┘
-         │  SchemaLinkingResult
-         ▼
-┌───────────────────┐
-│  Schema Pruning   │  ← Lọc bảng/cột không liên quan
-│  (SchemaPruner)   │
-└────────┬──────────┘
-         │  Pruned DDL (CR_P format)
-         ▼
-┌───────────────────┐
-│  Few-Shot         │  ← DAIL Selection (masked question similarity)
-│  Retriever        │     + SQL skeleton similarity (optional)
-│  (FewShotRetriever│     + MMR diversity (optional)
-└────────┬──────────┘
-         │  DAIL_O formatted examples
-         ▼
-┌───────────────────┐
-│  Prompt Builder   │  ← System instruction (VI) + CR_P schema
-│  (PromptBuilder)  │     + linking hints + few-shot + question
-└────────┬──────────┘
-         │  Full prompt
-         ▼
-┌───────────────────┐
-│   LLM Call        │  ← OpenRouter API (GPT-4o-mini / Qwen3 / ...)
-│   (LLMClient)     │
-└────────┬──────────┘
-         │  Raw SQL
-         ▼
-┌───────────────────┐
-│  Post-Processor   │  ← Strip markdown · fix quotes · fix bare values
-│  (SQLPostProcessor│     · comma spacing · repetition detection
-└────────┬──────────┘
-         │  Clean SQL
-         ▼
-┌───────────────────┐
-│  Evaluation       │  ← Execution Accuracy (EX) trên SQLite
-│  (sql_executor)   │
-└───────────────────┘
-```
+![Kiến trúc tổng quan](https://raw.githubusercontent.com/TranDucThien-0509/Text-to-SQL/main/architecture.png)
 
 ---
 
