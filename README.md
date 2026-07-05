@@ -82,7 +82,7 @@ cfg = ConfigManager.load("configs/spider_qwen.yaml")
 cfg = ConfigManager.load(
     "configs/spider_qwen.yaml",
     test_limit=50,
-    llm_model="openai/gpt-4o-mini",
+    llm_model="qwen/qwen3-8b",
 )
 ```
 
@@ -91,13 +91,11 @@ cfg = ConfigManager.load(
 ```bash
 # Thay thế/override bất kỳ field nào với prefix T2SQL_
 export OPENROUTER_API_KEY="sk-or-v1-..."
-export T2SQL_LLM_MODEL="qwen/qwen3-14b"
+export T2SQL_LLM_MODEL="qwen/qwen3-8b"
 export T2SQL_TEST_LIMIT="100"
 ```
 
 ---
-
-## Dữ liệu
 
 ### Cấu trúc thư mục data
 
