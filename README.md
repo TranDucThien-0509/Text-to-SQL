@@ -19,8 +19,7 @@ Một pipeline **Text-to-SQL** xây dựng trên nền tảng [DAIL-SQL](https:/
 ---
 ## Kiến trúc tổng quan
 
-![Kiến trúc tổng quan]
-(https://raw.githubusercontent.com/TranDucThien-0509/Text-to-SQL/main/architecture.png)
+![Kiến trúc tổng quan](https://raw.githubusercontent.com/TranDucThien-0509/Text-to-SQL/main/architecture.png)
 
 ---
 
