@@ -37,7 +37,9 @@ dailsql/
     │
     ├── schema/
     │   ├── cell_value_retriever.py  # Fuzzy match câu hỏi với cell values
-    │   ├── schema_linker.py         # 4-way schema linking (tiếng Việt)
+    │   ├── masker.py                # Che lại những col, table trong câu hỏi
+    │   ├── schema_graph_linker.py   # Linker đồ thị
+    │   ├── schema_linker.py         # 4-way schema linking cải tiến
     │   ├── schema_processor.py      # Parse tables.json → DatabaseSchema
     │   └── schema_pruner.py         # Loại bỏ bảng/cột không liên quan
     │
